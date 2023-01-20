@@ -1,32 +1,36 @@
 import random
-def arithmetic_3_1():
+def arithmetic_4():
     bool = True
     while bool:
-        number_1 = random.randint(101, 888)
-        number_2 = random.randint(101, 888)
-        if (number_1 % 10 != 0 and number_2 % 10 != 0):
+        a = random.randint(1, 6)
+        b = random.randint(1, 9)
+        c = random.randint(1, 9)
+
+        d = random.randint(1, 40) / 10
+
+        e = random.randint(1, 6)
+        f = random.randint(1, 9)
+        g = random.randint(1, 9)
+
+        res = ((a * c + b) / c - d) * ((e*g+f)/g)
+        fract_ok = False
+        if (get_all_divisors_arithmetic_4(b, c) and get_all_divisors_arithmetic_4(f, g)):
+            fract_ok = True
+
+        if ((res - int(res * 100) / 100) == 0) and (b < c) and (f < g) and (fract_ok == True) and ( c % b != 0) and (g % f != 0):
             bool = False
-    a, c = arithmetic_3_2(number_1)
-    b, d = arithmetic_3_2(number_2)
+            return a, b, c, e, d, f, g, res
 
-    res = round((round((a*b),6)/ round((c*d),6)), 4)
+def get_all_divisors_arithmetic_4(n1, n2):
+    flag = True
+    for i in range(2, int(n1 / 2) + 1):
+        if (n1 % i == 0) and (n2 % i == 0):
+            flag = False
+    return flag
 
-    if (res - int(res)) == 0:
-        res = round(res)
-
-    return a, b, c, d, res
-def arithmetic_3_2(number):
-    rnd = 0
-    rnd_1 = 0
-    while (rnd == rnd_1):
-        rnd = random.choice([10, 100, 1000])
-        rnd_1 = random.choice([10, 100, 1000])
-    #number_2 = number
-    number_1 = number / rnd
-    number_2 =  number/rnd_1
-    return number_1, number_2
 i = 0
 while i < 50:
-    a, b, c, d, res = arithmetic_3_1()
-    print (a, b, c, d, res)
+    a, b, c, e, d, f, g, res = arithmetic_4()
+
+    print ( f' ( {a} {b}/{c} - {d} ) *{e} {f}/{g} = {res}')
     i += 1
