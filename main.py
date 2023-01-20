@@ -18,11 +18,15 @@ def arithmetic_1():
             res = (-(a1 * c + b) / c) * (e / d)
 
         fract_ok = False
+        fract_ok_1 = False
 
         if (get_all_divisors(b, c) and get_all_divisors(d, e)):
             fract_ok = True
 
-        if ((res - int(res * 100) / 100) == 0) and (b < c) and (d < e) and (fract_ok == True) and (c % b != 0) and (e % d != 0):
+        if (b != 1 and c % b == 0) or (d != 1 and e % d == 0):
+            fract_ok_1 = True
+
+        if ((res - int(res * 100) / 100) == 0) and (b < c) and (d < e) and (fract_ok == True) and (fract_ok_1 == False):
             bool = False
             return a, b, c, e, d, res
 
@@ -162,11 +166,15 @@ def arithmetic_4():
             d = round(d)
 
         fract_ok = False
+        fract_ok_1 = False
 
         if (get_all_divisors(b, c) and get_all_divisors(f, g)):
             fract_ok = True
 
-        if ((res - int(res * 100) / 100) == 0) and (b < c) and (f < g) and (fract_ok == True) and ( c % b != 0) and (g % f != 0):
+        if (b != 1 and c % b == 0) or (f != 1 and g % f == 0):
+            fract_ok_1 = True
+
+        if ((res - int(res * 100) / 100) == 0) and (b < c) and (f < g) and (fract_ok == True) and (fract_ok_1 == False):
             bool = False
             return a, b, c, e, d, f, g, res
 
