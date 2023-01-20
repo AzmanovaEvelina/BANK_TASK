@@ -19,7 +19,7 @@ def arithmetic_1():
 
         fract_ok = False
 
-        if (get_all_divisors_arithmetic_4(b, c) and get_all_divisors_arithmetic_4(d, e)):
+        if (get_all_divisors(b, c) and get_all_divisors(d, e)):
             fract_ok = True
 
         if ((res - int(res * 100) / 100) == 0) and (b < c) and (d < e) and (fract_ok == True) and (c % b != 0) and (e % d != 0):
@@ -163,14 +163,14 @@ def arithmetic_4():
 
         fract_ok = False
 
-        if (get_all_divisors_arithmetic_4(b, c) and get_all_divisors_arithmetic_4(f, g)):
+        if (get_all_divisors(b, c) and get_all_divisors(f, g)):
             fract_ok = True
 
         if ((res - int(res * 100) / 100) == 0) and (b < c) and (f < g) and (fract_ok == True) and ( c % b != 0) and (g % f != 0):
             bool = False
             return a, b, c, e, d, f, g, res
 
-def get_all_divisors_arithmetic_4(n1, n2):
+def get_all_divisors(n1, n2):
     flag = True
     for i in range(2, int(n1 / 2) + 1):
         if (n1 % i == 0) and (n2 % i == 0):
