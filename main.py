@@ -125,7 +125,7 @@ class id0401003(Scene):
         f = open('answer_4_3.txt','w')
 
         i = 0
-        while i < 3:
+        while i < 10:
             a, b, c, d, res = arithmetic_3_1()
 
             t = MathTex("{", a, " \\cdot ", b, "\\over", c, " \\cdot ", d, "}", " = ", font_size=60)
