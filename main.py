@@ -219,11 +219,10 @@ def arithmetic_5():
 
         d = random.randint(1, 40) / 10
 
-        e = random.randint(1, 6)
         f = random.randint(1, 9)
-        g = random.randint(1, 9)
+        g = random.randint(1, 70)
 
-        res = ((a * c + b) / c - d) / ((e * g + f) / g)
+        res = ((a * c + b) / c - d) / (f / g)
 
         if (d - int(d)) == 0:
             d = round(d)
@@ -239,7 +238,7 @@ def arithmetic_5():
 
         if ((res - int(res * 100) / 100) == 0) and (b < c) and (f < g) and (fract_ok == True) and (fract_ok_1 == False):
             bool = False
-            return a, b, c, e, d, f, g, res
+            return a, b, c, d, f, g, res
 
 
 class id0401005(Scene):
@@ -251,9 +250,9 @@ class id0401005(Scene):
 
         i = 0
         while i < 10:
-            a, b, c, e, d, f1, g, res = arithmetic_5()
+            a, b, c, d, f1, g, res = arithmetic_5()
 
-            t = MathTex("\\left(", a, "{", b, "\\over", c, "}", "-", d, "\\right)", ":", e, "{", f1, "\\over", g, "}"," = ", font_size=60)
+            t = MathTex("\\left(", a, "{", b, "\\over", c, "}", "-", d, "\\right)", ":", "{", f1, "\\over", g, "}"," = ", font_size=60)
 
             if (res - int(res)) == 0:
                 res = round(res)
