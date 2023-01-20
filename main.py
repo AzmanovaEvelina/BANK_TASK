@@ -209,3 +209,60 @@ class id0401004(Scene):
             i += 1
 
         f.close()
+
+def arithmetic_5():
+    bool = True
+    while bool:
+        a = random.randint(1, 6)
+        b = random.randint(1, 9)
+        c = random.randint(1, 9)
+
+        d = random.randint(1, 40) / 10
+
+        e = random.randint(1, 6)
+        f = random.randint(1, 9)
+        g = random.randint(1, 9)
+
+        res = ((a * c + b) / c - d) / ((e * g + f) / g)
+
+        if (d - int(d)) == 0:
+            d = round(d)
+
+        fract_ok = False
+        fract_ok_1 = False
+
+        if (get_all_divisors(b, c) and get_all_divisors(f, g)):
+            fract_ok = True
+
+        if (b != 1 and c % b == 0) or (f != 1 and g % f == 0):
+            fract_ok_1 = True
+
+        if ((res - int(res * 100) / 100) == 0) and (b < c) and (f < g) and (fract_ok == True) and (fract_ok_1 == False):
+            bool = False
+            return a, b, c, e, d, f, g, res
+
+
+class id0401005(Scene):
+    def construct(self):
+
+        self.camera.background_color = DARKER_GRAY
+
+        f = open('answer_4_5.txt','w')
+
+        i = 0
+        while i < 10:
+            a, b, c, e, d, f1, g, res = arithmetic_5()
+
+            t = MathTex("\\left(", a, "{", b, "\\over", c, "}", "-", d, "\\right)", ":", e, "{", f1, "\\over", g, "}"," = ", font_size=60)
+
+            if (res - int(res)) == 0:
+                res = round(res)
+
+            f.write(f'{res}\n')
+
+            self.add(t, s, s3)
+            self.wait(1 / 60)
+            self.clear()
+            i += 1
+
+        f.close()
