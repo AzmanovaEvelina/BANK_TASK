@@ -265,3 +265,72 @@ class id0401005(Scene):
             i += 1
 
         f.close()
+
+def arithmetic_6():
+    bool = True
+    while bool:
+        a = random.randint(1, 6) * random.choice([-1, 1])
+        b = random.randint(1, 9)
+        c = random.randint(1, 9)
+
+        d = random.randint(1, 9) * random.choice([-1, 1])
+        e = random.randint(1, 9)
+
+        f = random.randint(1, 250) / random.choice([1, 10, 100])
+
+        if(d < 0):
+            d1 = d * -1
+        else:
+            d1 = d
+
+        if (a > 0):
+            res = (((a * c + b) / c) + (d / e)) * f
+        else:
+            a1 = a * -1
+            res = ((-(a1 * c + b) / c) + (d / e)) * f
+
+        if (f - int(f)) == 0:
+            f = round(f)
+
+        fract_not_ok = False
+        fract_not_ok_1 = False
+
+        if (get_all_divisors(b, c) and get_all_divisors(d, e)):
+            fract_not_ok = True
+
+        if (b != 1 and c % b == 0) or (d != 1 and e % d == 0):
+            fract_not_ok_1 = True
+
+        if ((res - int(res * 100) / 100) == 0) and (b < c) and (d1 < e) and (fract_not_ok == True) and ( fract_not_ok_1 == False):
+            bool = False
+            return a, b, c, d, e, f, res
+
+class id0401006(Scene):
+    def construct(self):
+
+        self.camera.background_color = DARKER_GRAY
+
+        f = open('answer_4_6.txt','w')
+
+        i = 0
+        while i < 10:
+            a, b, c, d, e, f1, res = arithmetic_6()
+
+            if (d < 0):
+
+                d = d * -1
+                t = MathTex("\\left(", a, "{", b, "\\over", c, "}", " - ",  "{", d, "\\over", e, "}", "\\right)", " \\cdot ", f1, " = ", font_size=60)
+            else:
+                t = MathTex("\\left(", a, "{", b, "\\over", c, "}", " + ",  "{", d, "\\over", e, "}", "\\right)", " \\cdot ", f1, " = ", font_size=60)
+
+            if (res - int(res)) == 0:
+                res = round(res)
+
+            f.write(f'{res}\n')
+
+            self.add(t, s, s3)
+            self.wait(1 / 60)
+            self.clear()
+            i += 1
+
+        f.close()
