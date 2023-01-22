@@ -334,3 +334,56 @@ class id0401006(Scene):
             i += 1
 
         f.close()
+
+def arithmetic_7():
+    bool = True
+    while bool:
+        a = random.randint(1, 10)
+        b = random.randint(1, 9)
+        c = random.randint(1, 12)
+
+        res = (a + b) / c
+        if (res - int(res * 100) / 100) == 0:
+            bool = False
+            return a, b, c, res
+
+
+class id0401007(Scene):
+    def construct(self):
+
+        self.camera.background_color = DARKER_GRAY
+
+        f = open('answer_4_7.txt', 'w')
+
+        i = 0
+        while i < 10:
+            a, b, c, res = arithmetic_7()
+
+            if (a == 1):
+                a_str = "axy"
+            else:
+                a_str = f'{a}axy'
+
+            if (b == 1):
+                b_str = "xya"
+            else:
+                b_str = f'{b}xya'
+
+            if (c == 1):
+                c_str = "yax"
+            else:
+                c_str = f'{c}yax'
+
+            t = MathTex("\\left(", a_str, "-", "\\left(", "-", b_str, "\\right)", "\\right)", ":", c_str, "= ", font_size=60)
+
+            if (res - int(res)) == 0:
+                res = round(res)
+
+            f.write(f'{res}\n')
+
+            self.add(t, s, s3)
+            self.wait(1 / 60)
+            self.clear()
+            i += 1
+
+        f.close()
