@@ -1,20 +1,22 @@
 import random
-def arithmetic_7():
+def arithmetic_9():
     bool = True
     while bool:
-        a = random.randint(1, 10)
-        b = random.randint(1, 9)
-        c = random.randint(1, 12)
+        a = random.randint(1, 9)
+        b = random.randint(1, 9) * random.choice([-1, 1])
 
-        res = (a + b) / c
+        if (b > 0):
+            res = - b
+        else:
+            res = b * -1
+
         if (res - int(res * 100) / 100) == 0:
             bool = False
-            return a, b, c, res
-
+            return a, b, res
 
 i = 0
-while i < 50:
-    a, b, c, res = arithmetic_7()
+while i < 15:
+    a, b, res = arithmetic_9()
 
-    print ( f' ( {a} + {b} ) : {c} = {res}')
+    print ( f' ( {a} {b} )= {res}')
     i += 1

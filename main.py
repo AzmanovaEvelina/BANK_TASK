@@ -422,3 +422,56 @@ class id0401008(Scene):
             i += 1
 
         f.close()
+
+def arithmetic_9():
+    bool = True
+    while bool:
+        a = random.randint(1, 9)
+        b = random.randint(1, 9) * random.choice([-1, 1])
+
+        if (b > 0):
+            res = - b
+        else:
+            res = b * -1
+
+        if (res - int(res * 100) / 100) == 0:
+            bool = False
+            return a, b, res
+
+
+class id0401009(Scene):
+    def construct(self):
+
+        self.camera.background_color = DARKER_GRAY
+
+        f = open('answer_4_9.txt', 'w')
+
+        i = 0
+        while i < 10:
+            a, b, res = arithmetic_9()
+
+            if (a == 1):
+                a_str = 'x^2'
+                a_str_1 = 'x'
+            else:
+                a_str = f'{a**2}x^2'
+                a_str_1 = f'{a}x'
+
+            if(b > 0):
+                t = MathTex("{", a_str, "-",b**2, "\\over", a_str_1,"+", b, "}", "-", a_str_1," = ", font_size=60)
+            else:
+                b = b * -1
+                t = MathTex("{", a_str, "-", b ** 2, "\\over", a_str_1, "-", b, "}", "-", a_str_1, " = ",
+                            font_size=60)
+
+            if (res - int(res)) == 0:
+                res = round(res)
+
+            f.write(f'{res}\n')
+
+            self.add(t, s, s3)
+            self.wait(1 / 60)
+            self.clear()
+            i += 1
+
+        f.close()
