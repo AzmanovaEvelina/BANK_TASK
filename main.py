@@ -387,3 +387,38 @@ class id0401007(Scene):
             i += 1
 
         f.close()
+def arithmetic_8():
+    bool = True
+    while bool:
+        a = random.randint(1, 9)
+        b = random.randint(1, 9)
+
+        res = b**2 * -1
+
+        if (res - int(res * 100) / 100) == 0:
+            bool = False
+            return a, b, res
+class id0401008(Scene):
+    def construct(self):
+
+        self.camera.background_color = DARKER_GRAY
+
+        f = open('answer_4_8.txt', 'w')
+
+        i = 0
+        while i < 10:
+            a, b, res = arithmetic_8()
+
+            t = MathTex("\\left(", a,"x", "-", b, "\\right)", "\\left(", a,"x", "+", b, "\\right)", "-", a**2,"x^2", "= ", font_size=60)
+
+            if (res - int(res)) == 0:
+                res = round(res)
+
+            f.write(f'{res}\n')
+
+            self.add(t, s, s3)
+            self.wait(1 / 60)
+            self.clear()
+            i += 1
+
+        f.close()
