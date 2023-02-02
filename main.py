@@ -475,3 +475,135 @@ class id0401009(Scene):
             i += 1
 
         f.close()
+
+def arithmetic_10():
+    bool = True
+    while bool:
+        a = random.randint(1, 9)
+        b = random.randint(1, 9) * random.choice([-1, 1])
+        c = random.randint(1, 15) * random.choice([-1, 1])
+
+        if (b > 0):
+            res = (2 * a * b)/ c
+        else:
+            res = (2 * a * b)/ c
+
+        if (res - int(res * 100) / 100) == 0:
+            bool = False
+            return a, b, c, res
+
+class id04010010(Scene):
+    def construct(self):
+
+        self.camera.background_color = DARKER_GRAY
+
+        f = open('answer_4_10.txt', 'w')
+
+        i = 0
+        while i < 10:
+            a, b, c, res = arithmetic_10()
+
+            if (a == 1):
+                a_str = 'x'
+                a_str_1 = 'x^2'
+            else:
+                a_str = f'{a}x'
+                a_str_1 = f'{a**2}x^2'
+
+            if (b == 1):
+                b_str = 'y'
+                b_str_1 = 'y^2'
+            elif (b == -1):
+                b_str = '-y'
+                b_str_1 = 'y^2'
+            else:
+                b_str = f'{b}y'
+                b_str_1 = f'{b ** 2}y^2'
+
+            if (c == 1):
+                c_str = 'xy'
+            elif (c == -1):
+                c_str = '-xy'
+            else:
+                c_str = f'{c}xy'
+
+
+            if(b > 0):
+                a_b_2 = a_str + "+" + b_str
+            else:
+                a_b_2 = a_str + b_str
+
+            if(c > 0):
+                t = MathTex("\\left(","\\left(", a_b_2, "\\right)","^2", "-", a_str_1, "-", b_str_1, "\\right)",":", c_str, "= ", font_size=60)
+            else:
+                t = MathTex("\\left(","\\left(", a_b_2, "\\right)", "^2", "-", a_str_1, "-", b_str_1,"\\right)", ":", "\\left(", c_str, "\\right)", "= ",
+                            font_size=60)
+
+            if (res - int(res)) == 0:
+                res = round(res)
+
+            f.write(f'{res}\n')
+
+            self.add(t, s, s3)
+            self.wait(1 / 60)
+            self.clear()
+            i += 1
+
+        f.close()
+
+def arithmetic_11():
+    bool = True
+    while bool:
+        a = random.randint(1, 10)
+        b = random.randint(1, 19)
+
+        c = random.randint(2, 10) * random.choice([-1, 1])
+        x = 10 * random.randint(5, 15)
+
+        d = random.randint(3, 50) * random.choice([-1, 1])
+
+        res = -(b**2) + (c * x) + d
+
+        if (res - int(res * 10) / 10) == 0:
+            bool = False
+            return a, b, c, x, d, res
+
+class id04010011(Scene):
+    def construct(self):
+
+        self.camera.background_color = DARKER_GRAY
+
+        f = open('answer_4_11.txt', 'w')
+
+        i = 0
+        while i < 3:
+            a, b, c, x, d, res = arithmetic_11()
+
+            if (a == 1):
+                a_str = 'x'
+                a_str_1 = 'x^2'
+            else:
+                a_str = f'{a}x'
+                a_str_1 = f'{a**2}x^2'
+
+            if(c > 0):
+                c_str = f'+{c}x'
+            else:
+                c_str = f'{c}x'
+
+            if(d > 0):
+                t = MathTex("\\left(", a,"x", "-", b, "\\right)", "\\left(", a,"x", "+", b, "\\right)","-", a**2, "x^2", c_str,"+", d, ", при x = ", x, font_size=60)
+            else:
+                t = MathTex("\\left(", a,"x", "-", b, "\\right)", "\\left(", a,"x", "+", b, "\\right)","-", a**2, "x^2", c_str, d, "fd x = ", x, font_size=60)
+
+            if (res - int(res)) == 0:
+                res = round(res)
+
+            f.write(f'{res}\n')
+
+            self.add(t, s, s3)
+            self.wait(1 / 60)
+            self.clear()
+            i += 1
+
+        f.close()
